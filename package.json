@@ -1,0 +1,43 @@
+{
+  "name": "some8",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.es5.js",
+  "scripts": {
+    "watch": "npm run transpile -- --watch",
+    "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha index.js -- --compilers js:babel-core/register",
+    "precoveralls": "npm run coverage",
+    "coveralls": "coveralls < coverage/lcov.info",
+    "test": "mocha --compilers js:babel-core/register",
+    "tdd": "npm test -- --watch",
+    "transpile": "babel index.js --out-file index.es5.js",
+    "prepublish": "npm run transpile",
+    "clean": "rimraf index.es5.js",
+    "push": "git push --follow-tags",
+    "postpublish": "npm-run-all clean push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamstarekov/some8.git"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "Vladimir Starkov <i@sdf> (http://sdf)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iamstarekov/some8/issues"
+  },
+  "homepage": "https://github.com/iamstarekov/some8#readme",
+  "devDependencies": {
+    "assert": "*",
+    "babel-cli": "^6.2.0",
+    "babel-core": "^6.2.1",
+    "babel-preset-es2015": "^6.1.18",
+    "coveralls": "*",
+    "isparta": "*",
+    "mocha": "*",
+    "npm-run-all": "*",
+    "rimraf": "*"
+  }
+}
